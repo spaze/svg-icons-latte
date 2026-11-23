@@ -61,7 +61,9 @@ class IconNodeFactory
 
 
 	/**
+	 * @param non-empty-string $svg
 	 * @param list<string> $cssClasses
+	 * @return non-empty-string
 	 * @throws IconTagException
 	 */
 	private function addClasses(string $svg, array $cssClasses, Tag $tag, StringNode $resource): string
