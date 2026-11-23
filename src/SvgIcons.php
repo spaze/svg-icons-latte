@@ -19,15 +19,20 @@ class SvgIcons
 	/**
 	 * @param string $icon The icon name without the `.svg` extension
 	 * @throws SvgIconException
+	 * @return non-empty-string
 	 */
 	public function getSvg(string $icon): string
 	{
 		$iconName = basename($icon);
 		try {
-			return FileSystem::read(sprintf('%s/%s.svg', $this->dir, $iconName));
+			$svg = FileSystem::read(sprintf('%s/%s.svg', $this->dir, $iconName));
 		} catch (IOException $e) {
 			throw new SvgIconException($iconName, $this->dir, previous: $e);
 		}
+		if ($svg === '') {
+			throw new SvgIconException($iconName, $this->dir);
+		}
+		return $svg;
 	}
 
 }

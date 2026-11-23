@@ -10,6 +10,9 @@ use Latte\Compiler\PrintContext;
 class IconNode extends StatementNode
 {
 
+	/**
+	 * @param non-empty-string $svg
+	 */
 	public function __construct(
 		private readonly string $svg,
 	) {
